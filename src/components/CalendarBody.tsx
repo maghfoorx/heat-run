@@ -15,10 +15,11 @@ export default function MainContent(): JSX.Element {
   //making boxes for each day of the year so far
   const boxes = [];
   for (let i = 0; i < daysInYearSoFar; i++) {
-    const xPosition = Math.floor(i / boxesPerRow) * 10;
-    const yPosition = (i % boxesPerRow) * 10;
+    const xPosition = Math.floor(i / boxesPerRow) * 15;
+    const yPosition = (i % boxesPerRow) * 15;
     boxes.push(
       <rect
+        className="EachDayBox"
         key={i}
         x={xPosition}
         y={yPosition}
