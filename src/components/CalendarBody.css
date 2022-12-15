@@ -1,3 +1,7 @@
+.SVGWrapper {
+    display: grid;
+    justify-content: center;
+}
 .SVGBox {
   background-color: bisque;
 }

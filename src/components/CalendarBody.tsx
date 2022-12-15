@@ -32,9 +32,11 @@ export default function MainContent(): JSX.Element {
   return (
     <>
       <h1>MAIN CONTENT</h1>
+      <div className="SVGWrapper">
       <svg width={1000} height={500} className="SVGBox">
         {boxes}
       </svg>
+      </div>
     </>
   );
 }
