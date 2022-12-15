@@ -1,4 +1,4 @@
-import "./MainContent.css";
+import "./CalendarBody.css";
 
 export default function MainContent(): JSX.Element {
   const boxesToMake = [1, 2, 3, 4, 5, 6, 7];

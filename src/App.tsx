@@ -1,9 +1,9 @@
-import MainContent from "./components/MainContent";
+import CalendarBody from "./components/CalendarBody";
 
 function App(): JSX.Element {
   return (
     <>
-      <MainContent />
+      <CalendarBody />
     </>
   );
 }
