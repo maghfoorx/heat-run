@@ -25,7 +25,7 @@ export default function MainContent(): JSX.Element {
         y={yPosition}
         width={10}
         height={10}
-        fill="red"
+        fill="grey"
       ></rect>
     );
   }
@@ -33,10 +33,11 @@ export default function MainContent(): JSX.Element {
   return (
     <>
       <h1>MAIN CONTENT</h1>
+      <p>Currently, I have one box plotted for each day in the year so far</p>
       <div className="SVGWrapper">
-      <svg width={1000} height={500} className="SVGBox">
-        {boxes}
-      </svg>
+        <svg width={1000} height={500} className="SVGBox">
+          {boxes}
+        </svg>
       </div>
     </>
   );

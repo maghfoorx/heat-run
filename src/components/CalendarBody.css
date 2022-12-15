@@ -1,11 +1,17 @@
 .SVGWrapper {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 .SVGBox {
   background-color: bisque;
+  display: grid;
+  justify-content: center;
 }
 
 .EachDayBox {
-    margin: 5;
+  margin: 5;
+}
+
+.AllBoxesWrapper {
+  background-color: brown;
 }
