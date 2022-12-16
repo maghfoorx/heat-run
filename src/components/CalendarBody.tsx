@@ -1,5 +1,6 @@
 import "./CalendarBody.css";
 import { getDaysInYear, differenceInCalendarDays } from "date-fns";
+import Clock from "./Clock";
 
 export default function MainContent(): JSX.Element {
   const currentDate = new Date();
@@ -25,6 +26,7 @@ export default function MainContent(): JSX.Element {
   return (
     <>
       <h1>MAIN CONTENT</h1>
+      <Clock />
       <p>Currently, I have one circle plotted for each day in the year so far</p>
       <div className="SVGWrapper">
         <svg width={1200} height={500} className="SVGBox">
