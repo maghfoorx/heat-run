@@ -27,7 +27,9 @@ export default function MainContent(): JSX.Element {
     <>
       <h1>MAIN CONTENT</h1>
       <Clock />
-      <p>Currently, I have one circle plotted for each day in the year so far</p>
+      <p>
+        Currently, I have one circle plotted for each day in the year so far
+      </p>
       <div className="SVGWrapper">
         <svg width={1200} height={500} className="SVGBox">
           {boxes}
