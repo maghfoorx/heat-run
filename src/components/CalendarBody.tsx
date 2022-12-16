@@ -14,17 +14,11 @@ export default function MainContent(): JSX.Element {
 
   //making boxes for each day of the year so far
   const boxes = [];
-  for (let i = 10; i < daysInYearSoFar+10; i++) {
-    const xPosition = Math.floor((i) / boxesPerRow) * 20;
-    const yPosition = (((i) % boxesPerRow) * 20) + 20;
+  for (let i = 10; i < daysInYearSoFar + 10; i++) {
+    const xPosition = Math.floor(i / boxesPerRow) * 20;
+    const yPosition = (i % boxesPerRow) * 20 + 20;
     boxes.push(
-      <circle
-        key={i}
-        cx={xPosition}
-        cy={yPosition}
-        r="8"
-        fill="grey"
-      />
+      <circle key={i} cx={xPosition} cy={yPosition} r="8" fill="grey" />
     );
   }
 
