@@ -14,19 +14,17 @@ export default function MainContent(): JSX.Element {
 
   //making boxes for each day of the year so far
   const boxes = [];
-  for (let i = 0; i < daysInYearSoFar; i++) {
-    const xPosition = Math.floor(i / boxesPerRow) * 15;
-    const yPosition = (i % boxesPerRow) * 15;
+  for (let i = 10; i < daysInYearSoFar+10; i++) {
+    const xPosition = Math.floor((i) / boxesPerRow) * 20;
+    const yPosition = (((i) % boxesPerRow) * 20) + 20;
     boxes.push(
-      <rect
-        className="EachDayBox"
+      <circle
         key={i}
-        x={xPosition}
-        y={yPosition}
-        width={10}
-        height={10}
+        cx={xPosition}
+        cy={yPosition}
+        r="8"
         fill="grey"
-      ></rect>
+      />
     );
   }
 
@@ -35,7 +33,7 @@ export default function MainContent(): JSX.Element {
       <h1>MAIN CONTENT</h1>
       <p>Currently, I have one box plotted for each day in the year so far</p>
       <div className="SVGWrapper">
-        <svg width={1000} height={500} className="SVGBox">
+        <svg width={1200} height={500} className="SVGBox">
           {boxes}
         </svg>
       </div>
