@@ -1,8 +1,6 @@
-import "./CalendarBody.css";
 import { getDaysInYear, differenceInCalendarDays } from "date-fns";
-import Clock from "./Clock";
 
-export default function MainContent(): JSX.Element {
+export default function Heatmap(): JSX.Element {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
 
@@ -25,8 +23,7 @@ export default function MainContent(): JSX.Element {
 
   return (
     <>
-      <h1>MAIN CONTENT</h1>
-      <Clock />
+      <h1>Running Heatmap</h1>
       <p>
         Currently, I have one circle plotted for each day in the year so far
       </p>
