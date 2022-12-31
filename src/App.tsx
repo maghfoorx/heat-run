@@ -3,7 +3,7 @@ import MainBody from "./components/MainBody";
 function App(): JSX.Element {
   return (
     <>
-      <MainBody/>
+      <MainBody />
     </>
   );
 }
