@@ -1,43 +1,32 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import { startOfYear, endOfYear, eachDayOfInterval, format } from 'date-fns'
-import { schemeBrBG } from 'd3';
+import { formattedDates } from '../utils/DatesArray';
+
 
 export default function Heatmap(): JSX.Element {
-  const currentDate = new Date();
-  const startDate = startOfYear(currentDate)
-  const endDate = endOfYear(currentDate);
-  const dates = eachDayOfInterval({ start: startDate, end: endDate })
-  const formattedDates = dates.map(date => format(date, 'dd-MM-yyyy'));
+  const data = [
+    {name: 'Martha'},
+    {name: 'cat'},
+    {name: 'dog'}
+  ]
   /*Now working with D3 to create an svg */
-  const d3Container = useRef(null)
-  const width = 1000
+  const d3Ref = useRef<SVGSVGElement | null>(null);
+  const [selection, setSelection] = useState<null | d3.Selection<SVGSVGElement | null, unknown, null, undefined>>(null);
   const height = 400
 
   useEffect(() => {
-    if (d3Container.current) {
-      const svg = d3.select(d3Container.current).attr('width', width).attr('height', height).style('background-color', 'yellow');
-
-const gutterSize = 5;
-const rectWidth = 20;
-const rectHeight = 20;
-const numColumns = Math.floor(width / (rectWidth + gutterSize));  // Calculate the number of columns
-const numRows = Math.floor(height / (rectHeight + gutterSize));  // Calculate the number of rows
-
-const rects = svg.selectAll('rect').data(formattedDates)
-rects.enter().append('rect')
-  .attr('width', rectWidth)
-  .attr('height', rectHeight)
-  .attr('x', (d, i) => (i % numColumns) * (rectWidth + gutterSize))  // Set the `x` position based on the number of columns
-  .attr('y', (d, i) => Math.floor(i / numColumns) * (rectHeight + gutterSize))  // Set the `y` position based on the number of rows
-  .attr('fill', 'red')
-
-
+    if (!selection) {
+      setSelection(d3.select(d3Ref.current));
     }
-  }, [d3Container.current, formattedDates])
+    else {
+      selection.attr('height', height).style('background-color', 'yellow')
+
+      // .append('rect').attr('width', 100).attr('height', 100).attr('fill', 'blue')
+    }
+  }, [selection])
   return (
-    <div>
-      <svg ref={d3Container}></svg>
+    <div className='calendar-map-wrapper'>
+      <svg ref={d3Ref} width={'100%'}></svg>
     </div>
   )
 }

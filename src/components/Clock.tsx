@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 export default function Clock(): JSX.Element {
   const [time, setTime] = useState(new Date());
-  console.log(time);
 
   useEffect(() => {
     const updateTime = setInterval(() => {
