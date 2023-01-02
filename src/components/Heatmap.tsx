@@ -1,14 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import { formattedDates } from '../utils/DatesArray';
+
 
 
 export default function Heatmap(): JSX.Element {
-  const data = [
-    {name: 'Martha'},
-    {name: 'cat'},
-    {name: 'dog'}
-  ]
+  const names = ["hello", "cat", "world"]
   /*Now working with D3 to create an svg */
   const d3Ref = useRef<SVGSVGElement | null>(null);
   const [selection, setSelection] = useState<null | d3.Selection<SVGSVGElement | null, unknown, null, undefined>>(null);
@@ -19,9 +15,17 @@ export default function Heatmap(): JSX.Element {
       setSelection(d3.select(d3Ref.current));
     }
     else {
-      selection.attr('height', height).style('background-color', 'yellow')
-
-      // .append('rect').attr('width', 100).attr('height', 100).attr('fill', 'blue')
+      selection
+      .attr('height', height).style('background-color', 'yellow')
+      .selectAll("rect")
+      .data(names)
+      .enter()
+      .append("rect")
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", "blue")
+      console.log(selection)
+      
     }
   }, [selection])
   return (
