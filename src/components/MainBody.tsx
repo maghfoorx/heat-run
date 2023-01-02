@@ -9,6 +9,7 @@ export default function MainBody(): JSX.Element {
     <>
       <Clock />
       <Heatmap />
+      <Calendar />
     </>
   );
 }

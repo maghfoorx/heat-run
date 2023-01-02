@@ -24,11 +24,12 @@ export default function Heatmap(): JSX.Element {
     }
     else {
       //styling the main SVG
+      const margin = {top: 60, left: 50, right: 50, bottom: 50}
+      const cellSize = 15
       const svg = selection
       .style('background-color', 'yellow')
 
       //create a group for all the rectangles and then making the rectangles
-      const margin = {top: 60, left: 50, right: 50, bottom: 50}
       const rectangle = svg
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
@@ -38,7 +39,6 @@ export default function Heatmap(): JSX.Element {
       .append("rect")
 
       const rectanglePadding = 2;
-      const cellSize = 15
       rectangle
       .attr("width", cellSize)
       .attr("height", cellSize)
@@ -66,8 +66,11 @@ export default function Heatmap(): JSX.Element {
     }
   }, [selection])
   return (
-    <div className='calendar-map-wrapper'>
+    <div className='calendar-map-div'>
+      <div className='svg-wrapper'>
       <svg ref={d3Ref} width={'100%'} height={'100%'}></svg>
+      <button className='log-button'>Log Activity</button>
+      </div>
     </div>
   )
 }

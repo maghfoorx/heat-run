@@ -1,8 +1,27 @@
-.calendar-map-wrapper {
-  width: 1000px;
-  height: 300px;
+body {
+  background-color: aqua;
+}
+.calendar-map-div {
+  width: 60%;
+  height: 400px;
+  margin: 0 auto;
+  background-color: grey;
+  justify-content: center;
+}
+
+.svg-wrapper {
+  width: 90%;
+  height: 250px;
   margin: 0 auto;
 }
+
+.log-button {
+  width: 100px;
+  height: 50px;
+}
+
+
+
 
 .rectangle-empty {
   fill: blue;
