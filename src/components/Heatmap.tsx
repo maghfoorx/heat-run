@@ -12,7 +12,7 @@ interface FormattedDatesTypes {
   const formattedDates: FormattedDatesTypes[] = dates.map(date => ({ date: format(date, 'dd-MM-yyyy') }));
 
 
-  const monthsArray = ['Jan', 'Feb', 'March', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const monthsArray = ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 export default function Heatmap(): JSX.Element {
   /*Now working with D3 to create an svg */
   const d3Ref = useRef<SVGSVGElement | null>(null);
@@ -44,7 +44,7 @@ export default function Heatmap(): JSX.Element {
       .attr("height", cellSize)
       .attr("x", (d, i) => Math.floor(i / 7) * (cellSize + rectanglePadding))
       .attr("y", (d, i) => (i % 7) * (cellSize + rectanglePadding))
-      .attr("fill", "blue")
+      .attr('class', 'rectangle-empty')
       
       //creating a group for the months and then adding the months on top of rectangles
       const marginForMonths = margin.top - 5
