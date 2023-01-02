@@ -5,7 +5,8 @@ body {
   width: 60%;
   height: 400px;
   margin: 0 auto;
-  background-color: grey;
+  padding: 1rem;
+  background-color: rgb(187, 181, 181);
   justify-content: center;
 }
 
@@ -25,4 +26,8 @@ body {
 
 .rectangle-empty {
   fill: blue;
+}
+
+.rectangle-filled {
+  fill: green;
 }
