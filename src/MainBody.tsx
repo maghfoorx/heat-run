@@ -20,8 +20,8 @@ interface DatesWithColour {
 }
 export default function MainBody(): JSX.Element {
   const currentDate = new Date();
-  const startDate = subDays(startOfYear(addYears(currentDate, 1)), 1);
-  const endDate = endOfYear(addYears(currentDate, 1));
+  const startDate = startOfYear(currentDate);
+  const endDate = endOfYear(currentDate);
   const dates = eachDayOfInterval({ start: startDate, end: endDate });
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
