@@ -1,6 +1,13 @@
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
-import { startOfYear, endOfYear, eachDayOfInterval, format, addYears, subDays } from "date-fns";
+import {
+  startOfYear,
+  endOfYear,
+  eachDayOfInterval,
+  format,
+  addYears,
+  subDays,
+} from "date-fns";
 import { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import "./MainBody.css";
@@ -60,9 +67,9 @@ export default function MainBody(): JSX.Element {
             }}
             tooltipDataAttrs={(value: any) => {
               let formattedDate: string | undefined;
-          if (value.date) {
-            formattedDate = format(value.date, "MMM dd, yyyy");
-          }
+              if (value.date) {
+                formattedDate = format(value.date, "MMM dd, yyyy");
+              }
               return {
                 "data-tip": `${formattedDate}`,
               };
