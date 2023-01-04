@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import { eachDayOfInterval, endOfYear, format, startOfYear } from "date-fns";
 import Calendar from "react-calendar";
+import ReactTooltip from 'react-tooltip'
 
 interface FormattedDatesTypes {
     date: string
@@ -52,6 +53,10 @@ export default function Heatmap(): JSX.Element {
       .attr("x", (d, i) => Math.floor(i / 7) * (cellSize + rectanglePadding))
       .attr("y", (d, i) => (i % 7) * (cellSize + rectanglePadding))
       .attr('class', (d, i) => d.completed === false ? 'rectangle-empty' : 'rectangle-filled')
+      .attr('data-tip', (d) => d.date)
+
+      //adding tooltip
+      
       
       //creating a group for the months and then adding the months on top of rectangles
       const marginForMonths = margin.top - 5
@@ -98,6 +103,7 @@ export default function Heatmap(): JSX.Element {
       </div>
     </div>
     <Calendar onChange={(date: Date) => setSelectedDate(format(date, 'dd-MM-yyyy'))}/>
+    <ReactTooltip />
     </>
   )
 }
