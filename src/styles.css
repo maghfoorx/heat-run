@@ -1,21 +1,70 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: 'Roboto Condensed';
+  
+  --fw-reg: 300;
+  --fw-bold: 900;
+
+  --clr-bg: #FDF0D5;
+  --clr-dark: #3A3335;
+  --clr-accent: #03256C;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
+        0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 800px) {
+  :root {
+    --fs-h1: 2rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
+  }
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-dark);
+  margin: 0;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.appheader {
+  font-size: var(--fs-h1);
+  text-align: center;
+  margin: 0;
+  box-shadow: var(--bs);
+}
+
+
 .log-button {
   width: 100px;
   height: 50px;
 }
+
+
+/*
+* react-calendar-heatmap styles
+*/
 .heatmap-wrapper {
   width: 70%;
   background-color: #407ba3;
   padding: 1rem;
   margin: 0 auto;
+  box-shadow: var(--bs);
 }
-.colour-red {
-  fill: red;
-}
-
-.colour-filled {
-  fill: green;
-}
-
 svg {
   shape-rendering: geometricprecision;
 }
@@ -23,10 +72,6 @@ rect {
   rx: 10px;
   ry: 10px;
 }
-
-/*
- * react-calendar-heatmap styles
-*/
 
 .react-calendar-heatmap text {
   font-size: 0.5rem;

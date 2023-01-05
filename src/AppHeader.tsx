@@ -1,6 +1,6 @@
 export default function AppHeader(): JSX.Element {
     return (
-        <header>
+        <header className="appheader">
             <h1>
                 HEAT RUN || Track your running journey!
             </h1>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { startDate, endDate, yearDates } from "./utils/YearDates";
 import { format } from "date-fns";
-import "./styles.css";
 import { DatesDataType } from "./utils/DatesDataInterface";
 
 interface HeatMapProps {
