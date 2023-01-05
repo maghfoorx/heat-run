@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CalendarView from "./CalendarView";
+import ViewCalendar from "./ViewCalendar";
 import HeatMap from "./HeatMap";
 
 export default function MainBody(): JSX.Element {
@@ -7,7 +7,7 @@ export default function MainBody(): JSX.Element {
     return (
         <>
         <HeatMap selectedDate={selectedDate}/>
-        <CalendarView setSelectedDate={setSelectedDate} selectedDate={selectedDate}/>
+        <ViewCalendar setSelectedDate={setSelectedDate} selectedDate={selectedDate}/>
         </>
     )
 }

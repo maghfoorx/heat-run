@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import Calendar from "react-calendar";
+import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 interface CalendarViewProps {
@@ -8,7 +8,7 @@ interface CalendarViewProps {
 }
 
 //This component renders the calendar view that you use to select a date
-export default function CalendarView(props: CalendarViewProps): JSX.Element {
+export default function ViewCalendar(props: CalendarViewProps): JSX.Element {
     return (
         <>
         <Calendar value={props.selectedDate} onChange={props.setSelectedDate}/>

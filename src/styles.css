@@ -46,6 +46,7 @@ body {
   text-align: center;
   margin: 0;
   box-shadow: var(--bs);
+  color: var(--clr-accent);
 }
 
 
