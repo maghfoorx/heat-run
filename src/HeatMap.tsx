@@ -6,14 +6,16 @@ import { format } from "date-fns";
 import "./styles.css";
 import { DatesDataType } from "./utils/DatesDataInterface";
 
-
-export default function HeatMap(): JSX.Element {
+interface HeatMapProps {
+  selectedDate: Date;
+}
+export default function HeatMap(props: HeatMapProps): JSX.Element {
 
   const [datesToUse, setDatesToUse] =
     useState<DatesDataType[]>(yearDates);
   const handleLogButton = () => {
     const newDateswithColours: DatesDataType[] = datesToUse.map((object) => {
-      if (object.date.getTime() === selectedDate.getTime()) {
+      if (object.date.getTime() === props.selectedDate.getTime()) {
         return { ...object, colour: "filled" };
       }
       return object;
