@@ -5,14 +5,14 @@
 }
 
 :root {
-  --ff-primary: 'Roboto Condensed';
-  
+  --ff-primary: "Roboto Condensed";
+
   --fw-reg: 300;
   --fw-bold: 900;
 
-  --clr-bg: #FDF0D5;
-  --clr-dark: #3A3335;
-  --clr-accent: #03256C;
+  --clr-bg: #fdf0d5;
+  --clr-dark: #3a3335;
+  --clr-accent: #03256c;
 
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
@@ -20,7 +20,7 @@
   --fs-body: 1rem;
 
   --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
-        0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 800px) {
@@ -49,12 +49,10 @@ body {
   color: var(--clr-accent);
 }
 
-
 .log-button {
   width: 100px;
   height: 50px;
 }
-
 
 /*
 * react-calendar-heatmap styles

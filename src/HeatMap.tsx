@@ -9,9 +9,7 @@ interface HeatMapProps {
   selectedDate: Date;
 }
 export default function HeatMap(props: HeatMapProps): JSX.Element {
-
-  const [datesToUse, setDatesToUse] =
-    useState<DatesDataType[]>(yearDates);
+  const [datesToUse, setDatesToUse] = useState<DatesDataType[]>(yearDates);
   const handleLogButton = () => {
     const newDateswithColours: DatesDataType[] = datesToUse.map((object) => {
       if (object.date.getTime() === props.selectedDate.getTime()) {
