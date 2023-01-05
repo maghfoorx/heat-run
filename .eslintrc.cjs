@@ -29,9 +29,5 @@ module.exports = {
         "react": {
           "version": "detect"
         }
-      },
-    "no-unused-vars": [
-        "error",
-        { "varsIgnorePattern": "rx|ry" }
-    ]
+      }
 }
