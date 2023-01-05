@@ -12,6 +12,7 @@ export default function ViewCalendar(props: CalendarViewProps): JSX.Element {
   return (
     <>
       <section className="calendar-wrapper">
+        <p>Select a date and press Log to make an entry!</p>
         <p>
           <b>Date Selected is:</b>{" "}
         </p>
