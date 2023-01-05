@@ -1,26 +1,24 @@
 import CalendarHeatmap from "react-calendar-heatmap";
-import "react-calendar-heatmap/dist/styles.css";
 import {
   startOfYear,
   endOfYear,
   eachDayOfInterval,
   format,
-  addYears,
   subDays,
 } from "date-fns";
 import { useState } from "react";
 import ReactTooltip from "react-tooltip";
-import "./MainBody.css";
+import "./styles.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 interface DatesWithColour {
   date: Date;
-  colour: "red" | "filled";
+  colour: "empty" | "filled";
 }
 export default function MainBody(): JSX.Element {
   const currentDate = new Date();
-  const startDate = startOfYear(currentDate);
+  const startDate = subDays(startOfYear(currentDate), 1);
   const endDate = endOfYear(currentDate);
   const dates = eachDayOfInterval({ start: startDate, end: endDate });
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -28,7 +26,7 @@ export default function MainBody(): JSX.Element {
   const datesWithColour: DatesWithColour[] = dates.map((date) => {
     return {
       date: date,
-      colour: "red",
+      colour: "empty",
     };
   });
   const [datesToUse, setDatesToUse] =
@@ -46,26 +44,26 @@ export default function MainBody(): JSX.Element {
   return (
     <>
       <>
-        <div className="calendarMap">
+        <div className="heatmap-wrapper">
           <CalendarHeatmap
-            gutterSize={3}
+            gutterSize={1}
             showWeekdayLabels={true}
             startDate={startDate}
             endDate={endDate}
             values={datesToUse}
             classForValue={(value) => {
               if (!value) {
-                return "color-empty";
+                return "colour-empty";
               }
-              if (value.colour === "red") {
-                return "colour-red";
+              if (value.colour === "empty") {
+                return "colour-empty";
               }
               if (value.colour === "filled") {
                 return "colour-filled";
               }
-              return "color-white";
+              return "colour-empty";
             }}
-            tooltipDataAttrs={(value: any) => {
+            tooltipDataAttrs={(value: DatesWithColour) => {
               let formattedDate: string | undefined;
               if (value.date) {
                 formattedDate = format(value.date, "MMM dd, yyyy");

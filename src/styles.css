@@ -1,0 +1,70 @@
+.log-button {
+  width: 100px;
+  height: 50px;
+}
+.heatmap-wrapper {
+  width: 70%;
+  background-color: #407ba3;
+  padding: 1rem;
+}
+.colour-red {
+  fill: red;
+}
+
+.colour-filled {
+  fill: green;
+}
+
+svg {
+  shape-rendering: geometricprecision;
+}
+rect {
+  rx: 10px;
+  ry: 10px;
+}
+
+/*
+ * react-calendar-heatmap styles
+*/
+
+.react-calendar-heatmap text {
+  font-size: 0.5rem;
+  fill: black;
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
+
+/*
+ * Default colour scale
+ */
+
+.react-calendar-heatmap .colour-empty {
+  fill: #eeeeee;
+}
+
+.react-calendar-heatmap .colour-filled {
+  fill: #e89005;
+}
+
+/*
+ * Running Distance Scale
+ */
+.react-calendar-heatmap .colour-distance-1 {
+  fill: #e89005;
+}
+.react-calendar-heatmap .colour-distance-2 {
+  fill: #ec7505;
+}
+.react-calendar-heatmap .colour-distance-3 {
+  fill: #d84a05;
+}
+.react-calendar-heatmap .colour-distance-4 {
+  fill: #f42b03;
+}
