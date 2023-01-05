@@ -11,11 +11,13 @@ interface CalendarViewProps {
 export default function ViewCalendar(props: CalendarViewProps): JSX.Element {
   return (
     <>
-      <Calendar value={props.selectedDate} onChange={props.setSelectedDate} />
-      <p>
-        <b>Date Selected is:</b>{" "}
-      </p>
-      {format(props.selectedDate, "MMM dd, yyyy")}
+      <section className="calendar-wrapper">
+        <p>
+          <b>Date Selected is:</b>{" "}
+        </p>
+        {format(props.selectedDate, "MMM dd, yyyy")}
+        <Calendar value={props.selectedDate} onChange={props.setSelectedDate} />
+      </section>
     </>
   );
 }

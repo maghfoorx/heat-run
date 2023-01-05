@@ -49,14 +49,32 @@ body {
   color: var(--clr-accent);
 }
 
+p {
+  margin: 0;
+}
+
+.calendar-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .log-button {
   width: 100px;
   height: 50px;
+  cursor: pointer;
 }
 
 /*
 * react-calendar-heatmap styles
 */
+.heatmap-title {
+  text-align: center;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
 .heatmap-wrapper {
   width: 70%;
   background-color: #407ba3;
@@ -77,8 +95,8 @@ rect {
   fill: black;
 }
 
-.react-calendar-heatmap .react-calendar-heatmap-small-text {
-  font-size: 5px;
+.react-calendar-heatmap {
+  margin: 0;
 }
 
 .react-calendar-heatmap rect:hover {
