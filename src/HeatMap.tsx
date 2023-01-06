@@ -5,6 +5,7 @@ import { startDate, endDate, yearDates } from "./utils/YearDates";
 import { format } from "date-fns";
 import { DatesDataType } from "./utils/DatesDataInterface";
 import { handleLogButton } from "./utils/handleLogButton";
+import RunningData from "./RunningDataForm";
 
 interface HeatMapProps {
   selectedDate: Date;
@@ -46,16 +47,10 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
             };
           }}
         />
-        <button
-          className="log-button"
-          onClick={() =>
-            setDatesToUse(handleLogButton(datesToUse, props.selectedDate))
-          }
-        >
-          Log Date
-        </button>
       </div>
       <hr />
+      <RunningData datesToUse={datesToUse} setDatesToUse={setDatesToUse} selectedDate={props.selectedDate}/>
+        <hr/>
       <ReactTooltip />
     </>
   );

@@ -61,6 +61,15 @@ p {
   text-align: center;
 }
 
+.form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-data {
+  display: flex;
+}
+
 .log-button {
   width: 100px;
   height: 50px;
