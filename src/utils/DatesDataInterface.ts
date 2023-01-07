@@ -4,17 +4,17 @@ export interface DatesDataType {
 }
 
 export type RunningDataType = {
-  hours: number,
-  minutes: number,
-  seconds: number,
-  distance: number
-}
+  hours: number;
+  minutes: number;
+  seconds: number;
+  distance: number;
+};
 
 export type APIDataType = {
-  id: number,
-  run_date: Date,
-  distance: number,
-  hours: number,
-  minutes: number,
-  seconds: number
-}
+  id: number;
+  run_date: Date;
+  distance: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};

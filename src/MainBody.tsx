@@ -3,7 +3,6 @@ import ViewCalendar from "./ViewCalendar";
 import HeatMap from "./HeatMap";
 import Table from "./Table";
 
-
 export default function MainBody(): JSX.Element {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
@@ -14,7 +13,7 @@ export default function MainBody(): JSX.Element {
         setSelectedDate={setSelectedDate}
         selectedDate={selectedDate}
       />
-      <Table/>
+      <Table />
     </>
   );
 }

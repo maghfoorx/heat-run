@@ -49,8 +49,12 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
         />
       </div>
       <hr />
-      <RunningData datesToUse={datesToUse} setDatesToUse={setDatesToUse} selectedDate={props.selectedDate}/>
-        <hr/>
+      <RunningData
+        datesToUse={datesToUse}
+        setDatesToUse={setDatesToUse}
+        selectedDate={props.selectedDate}
+      />
+      <hr />
       <ReactTooltip />
     </>
   );
