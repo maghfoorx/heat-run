@@ -9,3 +9,12 @@ export type RunningDataType = {
   seconds: number,
   distance: number
 }
+
+export type APIDataType = {
+  id: number,
+  run_date: Date,
+  distance: number,
+  hours: number,
+  minutes: number,
+  seconds: number
+}
