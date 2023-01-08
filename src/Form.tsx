@@ -20,14 +20,13 @@ export default function Form(props: FormProps): JSX.Element {
 
   const postFormData = async (formData: FormDataType) => {
     try {
-      const response = await axios.post(`${URL}/runs`, formData)
-      .then(() => props.setLogButtonClicked((prev) => !prev))
+      const response = await axios
+        .post(`${URL}/runs`, formData)
+        .then(() => props.setLogButtonClicked((prev) => !prev));
+    } catch (error) {
+      console.error(error);
     }
-    catch (error) {
-      console.error(error)
-    }
-  }
-
+  };
 
   //function that handles the states of hours minutes seconds and changes them accordingly
   const handleFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +35,7 @@ export default function Form(props: FormProps): JSX.Element {
 
   const handleSubmitButton = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postFormData(formData)
+    postFormData(formData);
     setFormData({
       date: props.selectedDate,
       hours: 0,

@@ -14,8 +14,6 @@ interface HeatMapProps {
 export default function HeatMap(props: HeatMapProps): JSX.Element {
   const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
 
-
-
   useEffect(() => {
     const updatedData = [...dataForHeatmap];
     for (const heatmapData of updatedData) {
@@ -28,7 +26,7 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
     }
     setDataForHeatmap(updatedData);
   }, [props.runningData]);
-  
+
   return (
     <>
       <div className="heatmap-wrapper">

@@ -4,7 +4,7 @@ export interface HeatmapDataType {
 }
 
 export type FormDataType = {
-  date: Date
+  date: Date;
   hours: number;
   minutes: number;
   seconds: number;
