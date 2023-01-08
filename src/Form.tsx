@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { DatesDataType, RunningDataType } from "./utils/DatesDataInterface";
 import { handleLogButton } from "./utils/handleLogButton";
 
-interface RunningDataProps {
+interface FormProps {
   datesToUse: DatesDataType[];
   setDatesToUse: React.Dispatch<React.SetStateAction<DatesDataType[]>>;
   selectedDate: Date;
 }
 
 //This component is a form that allows the user to input the data of their running activity. Once state of type RunningDataType is being managed.
-export default function RunningData(props: RunningDataProps): JSX.Element {
+export default function Form(props: FormProps): JSX.Element {
   const [runningData, setRunningData] = useState<RunningDataType>({
     hours: 0,
     minutes: 0,
@@ -22,8 +22,8 @@ export default function RunningData(props: RunningDataProps): JSX.Element {
   };
 
   const handleSubmitButton = (e: React.FormEvent<HTMLFormElement>) => {
-    props.setDatesToUse(handleLogButton(props.datesToUse, props.selectedDate));
     e.preventDefault();
+    props.setDatesToUse(handleLogButton(props.datesToUse, props.selectedDate));
   };
   return (
     <form className="form-data" onSubmit={handleSubmitButton}>

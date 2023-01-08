@@ -55,7 +55,7 @@ p {
 
 .calendar-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   width: fit-content;
   margin: 0 auto;
   text-align: center;
@@ -74,6 +74,11 @@ p {
   width: 100px;
   height: 50px;
   cursor: pointer;
+}
+
+.table-calendar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 /*
@@ -139,4 +144,30 @@ rect {
 }
 .react-calendar-heatmap .colour-distance-4 {
   fill: #f42b03;
+}
+
+/*
+* runs table data styles
+*/
+
+.runs-table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: 0.9em;
+  min-width: 500px;
+}
+
+.runs-table thead tr{
+  background-color: var(--clr-accent);
+  color: white;
+  text-align: left;
+}
+
+.runs-table th,
+.runs-table td {
+  padding: 12px 15px;
+}
+
+.runs-table tbody tr {
+  border-bottom: 1px solid black;
 }

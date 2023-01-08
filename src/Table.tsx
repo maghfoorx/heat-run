@@ -1,44 +1,44 @@
-import { getRunningData } from "./utils/getRunningData";
 import { APIDataType } from "./utils/DatesDataInterface";
-import { useEffect, useState } from "react";
 import { format } from "date-fns";
+import { useCallback, useState } from "react";
 
-export default function Table(): JSX.Element {
-  const [runningData, setRunningData] = useState<APIDataType[]>([]);
+interface TableProps {
+  runningData: APIDataType[];
+}
 
-  useEffect(() => {
-    getRunningData().then((data) => {
-      setRunningData(data);
-    });
-  }, []);
+export default function Table(props: TableProps): JSX.Element {
 
+  
   return (
     <section>
-      <table>
-        <tbody>
+      <table className="runs-table">
+        <thead>
           <tr>
             <th>Date</th>
-            <th>Distance</th>
+            <th>Distance /km</th>
             <th>Hours</th>
             <th>Minutes</th>
             <th>Seconds</th>
           </tr>
-          {runningData.map((run) => {
-            return (
-              <tr key={run.id}>
-                <th>
-                  {format(
-                    parseInt(run.run_date.toLocaleString()),
-                    "dd-MM-yyyy"
-                  )}
-                </th>
-                <th>{run.distance}</th>
-                <th>{run.hours}</th>
-                <th>{run.minutes}</th>
-                <th>{run.seconds}</th>
-              </tr>
-            );
-          })}
+          </thead>
+          <tbody>
+          {props.runningData.length > 0 &&
+            props.runningData.map((run) => {
+              return (
+                <tr key={run.id}>
+                  <th>
+                    {format(
+                      Date.parse(run.run_date),
+                      "MMMM dd, yyyy"
+                    )}
+                  </th>
+                  <th>{run.distance}</th>
+                  <th>{run.hours}</th>
+                  <th>{run.minutes}</th>
+                  <th>{run.seconds}</th>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </section>
