@@ -19,7 +19,11 @@ export default function MainBody(): JSX.Element {
 
   return (
     <>
-      <HeatMap selectedDate={selectedDate} runningData={runningData} />
+      <HeatMap
+        selectedDate={selectedDate}
+        runningData={runningData}
+        logButtonClicked={logButtonClicked}
+      />
       <hr />
       <Form
         selectedDate={selectedDate}

@@ -10,6 +10,7 @@ import { APIDataType, HeatmapDataType } from "./utils/DatesDataInterface";
 interface HeatMapProps {
   selectedDate: Date;
   runningData: APIDataType[];
+  logButtonClicked: boolean;
 }
 export default function HeatMap(props: HeatMapProps): JSX.Element {
   const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
@@ -25,7 +26,8 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
       }
     }
     setDataForHeatmap(updatedData);
-  }, [props.runningData]);
+  }, [props.runningData, props.logButtonClicked]);
+  console.log("Running data in the heatmap component is", props.runningData);
 
   return (
     <>

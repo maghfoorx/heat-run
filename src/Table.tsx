@@ -1,6 +1,5 @@
 import { APIDataType } from "./utils/DatesDataInterface";
 import { format } from "date-fns";
-import { useCallback, useState } from "react";
 
 interface TableProps {
   runningData: APIDataType[];
