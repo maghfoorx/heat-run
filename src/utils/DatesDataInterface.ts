@@ -1,6 +1,6 @@
-export interface DatesDataType {
+export interface HeatmapDataType {
   date: Date;
-  colour: "empty" | "filled";
+  distance: number;
 }
 
 export type RunningDataType = {
@@ -12,7 +12,7 @@ export type RunningDataType = {
 
 export type APIDataType = {
   id: number;
-  run_date: Date;
+  run_date: string;
   distance: number;
   hours: number;
   minutes: number;

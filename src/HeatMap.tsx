@@ -3,16 +3,27 @@ import { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { startDate, endDate, yearDates } from "./utils/YearDates";
 import { format } from "date-fns";
-import { DatesDataType } from "./utils/DatesDataInterface";
-import { handleLogButton } from "./utils/handleLogButton";
-import RunningData from "./RunningDataForm";
+import { APIDataType, HeatmapDataType } from "./utils/DatesDataInterface";
+
+//to convert the received date from the API to the date type in JS you need to Date.parse(props.runningDate[i].run_date). This will make the date into a number.
 
 interface HeatMapProps {
   selectedDate: Date;
+  runningData: APIDataType[];
 }
 export default function HeatMap(props: HeatMapProps): JSX.Element {
-  const [datesToUse, setDatesToUse] = useState<DatesDataType[]>(yearDates);
+  const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
 
+  for (const heatmapData of dataForHeatmap) {
+    const updatingDistanceAndColour = props.runningData.find(
+      (data) => Date.parse(data.run_date) === heatmapData.date.getTime()
+    );
+    if (updatingDistanceAndColour) {
+      heatmapData.distance = updatingDistanceAndColour.distance;
+    }
+  }
+
+  console.log(dataForHeatmap);
   return (
     <>
       <div className="heatmap-wrapper">
@@ -24,37 +35,35 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
           showWeekdayLabels={true}
           startDate={startDate}
           endDate={endDate}
-          values={datesToUse}
+          values={dataForHeatmap}
           classForValue={(value) => {
             if (!value) {
               return "colour-empty";
             }
-            if (value.colour === "empty") {
+            if (value.distance === 0) {
               return "colour-empty";
             }
-            if (value.colour === "filled") {
-              return "colour-filled";
+            if (value.distance < 5 && value.distance > 0) {
+              return "colour-distance-1";
             }
-            return "colour-empty";
+            if (value.distance >= 5 && value.distance < 10) {
+              return "colour-distance-3";
+            }
+            if (value.distance >= 10) {
+              return "colour-distance-4";
+            }
           }}
-          tooltipDataAttrs={(value: DatesDataType) => {
+          tooltipDataAttrs={(value: HeatmapDataType) => {
             let formattedDate: string | undefined;
             if (value.date) {
               formattedDate = format(value.date, "MMM dd, yyyy");
             }
             return {
-              "data-tip": `${formattedDate}`,
+              "data-tip": `${formattedDate}, distance: ${value.distance}km`,
             };
           }}
         />
       </div>
-      <hr />
-      <RunningData
-        datesToUse={datesToUse}
-        setDatesToUse={setDatesToUse}
-        selectedDate={props.selectedDate}
-      />
-      <hr />
       <ReactTooltip />
     </>
   );
