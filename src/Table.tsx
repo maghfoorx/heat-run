@@ -7,8 +7,6 @@ interface TableProps {
 }
 
 export default function Table(props: TableProps): JSX.Element {
-
-  
   return (
     <section>
       <table className="runs-table">
@@ -20,18 +18,13 @@ export default function Table(props: TableProps): JSX.Element {
             <th>Minutes</th>
             <th>Seconds</th>
           </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
           {props.runningData.length > 0 &&
             props.runningData.map((run) => {
               return (
                 <tr key={run.id}>
-                  <th>
-                    {format(
-                      Date.parse(run.run_date),
-                      "MMMM dd, yyyy"
-                    )}
-                  </th>
+                  <th>{format(Date.parse(run.run_date), "MMMM dd, yyyy")}</th>
                   <th>{run.distance}</th>
                   <th>{run.hours}</th>
                   <th>{run.minutes}</th>

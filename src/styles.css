@@ -157,7 +157,7 @@ rect {
   min-width: 500px;
 }
 
-.runs-table thead tr{
+.runs-table thead tr {
   background-color: var(--clr-accent);
   color: white;
   text-align: left;

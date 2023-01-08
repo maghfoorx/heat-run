@@ -23,11 +23,11 @@ export default function MainBody(): JSX.Element {
       {/* <Form selectedDate={selectedDate}/> */}
       <hr />
       <div className="table-calendar">
-      <ViewCalendar
-        setSelectedDate={setSelectedDate}
-        selectedDate={selectedDate}
-      />
-      <Table runningData={runningData}/>
+        <ViewCalendar
+          setSelectedDate={setSelectedDate}
+          selectedDate={selectedDate}
+        />
+        <Table runningData={runningData} />
       </div>
     </>
   );
