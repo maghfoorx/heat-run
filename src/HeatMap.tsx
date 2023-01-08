@@ -1,5 +1,5 @@
 import CalendarHeatmap from "react-calendar-heatmap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { startDate, endDate, yearDates } from "./utils/YearDates";
 import { format } from "date-fns";
@@ -14,16 +14,21 @@ interface HeatMapProps {
 export default function HeatMap(props: HeatMapProps): JSX.Element {
   const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
 
-  for (const heatmapData of dataForHeatmap) {
-    const updatingDistanceAndColour = props.runningData.find(
-      (data) => Date.parse(data.run_date) === heatmapData.date.getTime()
-    );
-    if (updatingDistanceAndColour) {
-      heatmapData.distance = updatingDistanceAndColour.distance;
-    }
-  }
 
-  console.log(dataForHeatmap);
+
+  useEffect(() => {
+    const updatedData = [...dataForHeatmap];
+    for (const heatmapData of updatedData) {
+      const updatingDistanceAndColour = props.runningData.find(
+        (data) => Date.parse(data.run_date) === heatmapData.date.getTime()
+      );
+      if (updatingDistanceAndColour) {
+        heatmapData.distance = updatingDistanceAndColour.distance;
+      }
+    }
+    setDataForHeatmap(updatedData);
+  }, [props.runningData]);
+  
   return (
     <>
       <div className="heatmap-wrapper">

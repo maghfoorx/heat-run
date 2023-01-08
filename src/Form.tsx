@@ -1,29 +1,49 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { DatesDataType, RunningDataType } from "./utils/DatesDataInterface";
-import { handleLogButton } from "./utils/handleLogButton";
+import { FormDataType } from "./utils/DatesDataInterface";
+import { URL } from "./utils/URL";
 
 interface FormProps {
-  datesToUse: DatesDataType[];
-  setDatesToUse: React.Dispatch<React.SetStateAction<DatesDataType[]>>;
   selectedDate: Date;
+  setLogButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 //This component is a form that allows the user to input the data of their running activity. Once state of type RunningDataType is being managed.
 export default function Form(props: FormProps): JSX.Element {
-  const [runningData, setRunningData] = useState<RunningDataType>({
+  const [formData, setFormData] = useState<FormDataType>({
+    date: props.selectedDate,
+    distance: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
-    distance: 0,
   });
 
-  const handleRunningData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRunningData({ ...runningData, [e.target.name]: e.target.value });
+  const postFormData = async (formData: FormDataType) => {
+    try {
+      const response = await axios.post(`${URL}/runs`, formData)
+      .then(() => props.setLogButtonClicked((prev) => !prev))
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
+
+  //function that handles the states of hours minutes seconds and changes them accordingly
+  const handleFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmitButton = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.setDatesToUse(handleLogButton(props.datesToUse, props.selectedDate));
+    postFormData(formData)
+    setFormData({
+      date: props.selectedDate,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      distance: 0,
+    });
   };
   return (
     <form className="form-data" onSubmit={handleSubmitButton}>
@@ -32,8 +52,8 @@ export default function Form(props: FormProps): JSX.Element {
         <input
           name="hours"
           type="number"
-          value={runningData.hours}
-          onChange={handleRunningData}
+          value={formData.hours}
+          onChange={handleFormData}
         />
       </label>
       <label>
@@ -41,8 +61,8 @@ export default function Form(props: FormProps): JSX.Element {
         <input
           name="minutes"
           type="number"
-          value={runningData.minutes}
-          onChange={handleRunningData}
+          value={formData.minutes}
+          onChange={handleFormData}
         />
       </label>
       <label>
@@ -50,8 +70,8 @@ export default function Form(props: FormProps): JSX.Element {
         <input
           name="seconds"
           type="number"
-          value={runningData.seconds}
-          onChange={handleRunningData}
+          value={formData.seconds}
+          onChange={handleFormData}
         />
       </label>
       <label>
@@ -59,16 +79,11 @@ export default function Form(props: FormProps): JSX.Element {
         <input
           name="distance"
           type="number"
-          value={runningData.distance}
-          onChange={handleRunningData}
+          value={formData.distance}
+          onChange={handleFormData}
         />
       </label>
       <button type="submit">Log Data</button>
     </form>
   );
 }
-
-//onChange={(event) => handleRunningData(event.target.name, event.target.value)}
-// const handleRunningData = (name, value) => {
-//     setRunningData({...runningData, [e.target.name]: e.target.value})
-// }

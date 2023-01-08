@@ -3,7 +3,8 @@ export interface HeatmapDataType {
   distance: number;
 }
 
-export type RunningDataType = {
+export type FormDataType = {
+  date: Date
   hours: number;
   minutes: number;
   seconds: number;
