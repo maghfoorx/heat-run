@@ -75,6 +75,7 @@ export default function Form(props: FormProps): JSX.Element {
           <input
             name="minutes"
             type="number"
+            max={59}
             value={formData.minutes}
             onChange={handleFormData}
           />
@@ -84,6 +85,7 @@ export default function Form(props: FormProps): JSX.Element {
           <input
             name="seconds"
             type="number"
+            max={59}
             value={formData.seconds}
             onChange={handleFormData}
           />
