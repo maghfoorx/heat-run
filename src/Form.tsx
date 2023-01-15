@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Datepicker from "./Datepicker";
 import { FormDataType } from "./utils/DatesDataInterface";
-import { deleteAllRuns } from "./utils/deleteAllRuns";
 import { URL } from "./utils/URL";
 
 interface FormProps {
   selectedDate: Date;
+  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
   setLogButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -28,7 +29,7 @@ export default function Form(props: FormProps): JSX.Element {
 
   const postFormData = async (formData: FormDataType) => {
     try {
-      const response = await axios
+      await axios
         .post(`${URL}/runs`, formData)
         .then(() => props.setLogButtonClicked((prev) => !prev));
     } catch (error) {
@@ -37,7 +38,7 @@ export default function Form(props: FormProps): JSX.Element {
   };
 
   const deleteAllRuns = async () => {
-    const response = await axios
+    await axios
       .delete(`${URL}/runs`)
       .then(() => props.setLogButtonClicked((prev) => !prev));
   };
@@ -101,6 +102,10 @@ export default function Form(props: FormProps): JSX.Element {
         </label>
         <button type="submit">Log Data</button>
       </form>
+      <Datepicker
+        selectedDate={props.selectedDate}
+        setSelectedDate={props.setSelectedDate}
+      />
       <button onClick={deleteAllRuns}>Delete All Values</button>
     </>
   );

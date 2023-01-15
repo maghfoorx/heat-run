@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ViewCalendar from "./ViewCalendar";
 import HeatMap from "./HeatMap";
 import Table from "./Table";
 import { APIDataType } from "./utils/DatesDataInterface";
@@ -27,14 +26,11 @@ export default function MainBody(): JSX.Element {
       <hr />
       <Form
         selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
         setLogButtonClicked={setLogButtonClicked}
       />
       <hr />
       <div className="table-calendar">
-        <ViewCalendar
-          setSelectedDate={setSelectedDate}
-          selectedDate={selectedDate}
-        />
         <Table runningData={runningData} />
       </div>
     </>
