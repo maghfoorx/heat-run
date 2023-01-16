@@ -101,9 +101,9 @@ export default function Form(props: FormProps): JSX.Element {
           />
         </label>
         <Datepicker
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
         <button type="submit">Log Data</button>
       </form>
       <button onClick={deleteAllRuns}>Delete All Values</button>

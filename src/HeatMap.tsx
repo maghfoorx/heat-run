@@ -15,7 +15,9 @@ interface HeatMapProps {
 export default function HeatMap(props: HeatMapProps): JSX.Element {
   const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
   const [popup, setPopup] = useState(false);
-  const [valueForPopup, setValueForPopup] = useState<null | HeatmapDataType>(null)
+  const [valueForPopup, setValueForPopup] = useState<null | HeatmapDataType>(
+    null
+  );
 
   useEffect(() => {
     const updatedData = [...dataForHeatmap];
@@ -31,16 +33,14 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
   }, [props.runningData, props.logButtonClicked]);
 
   const handleCircleClicked = (value: HeatmapDataType) => {
-    setPopup(!popup)
-    setValueForPopup(value)
-  }
+    setPopup(!popup);
+    setValueForPopup(value);
+  };
 
   return (
     <>
       <div className="heatmap-wrapper">
-        <p className="heatmap-title">
-          2023 Running Activity
-        </p>
+        <p className="heatmap-title">2023 Running Activity</p>
         <CalendarHeatmap
           gutterSize={1}
           showWeekdayLabels={true}
@@ -73,11 +73,15 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
               "data-tip": `${formattedDate}, distance: ${value.distance}km`,
             };
           }}
-          onClick={(value)=> handleCircleClicked(value)}
+          onClick={(value) => handleCircleClicked(value)}
         />
       </div>
       <ReactTooltip />
-      <PopupView popup={popup} setPopup={setPopup} valueForPopup={valueForPopup}/>
+      <PopupView
+        popup={popup}
+        setPopup={setPopup}
+        valueForPopup={valueForPopup}
+      />
     </>
   );
 }

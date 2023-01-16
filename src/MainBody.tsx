@@ -17,14 +17,9 @@ export default function MainBody(): JSX.Element {
 
   return (
     <>
-      <HeatMap
-        runningData={runningData}
-        logButtonClicked={logButtonClicked}
-      />
+      <HeatMap runningData={runningData} logButtonClicked={logButtonClicked} />
       <hr />
-      <Form
-        setLogButtonClicked={setLogButtonClicked}
-      />
+      <Form setLogButtonClicked={setLogButtonClicked} />
       <hr />
       <div className="table-calendar">
         <Table runningData={runningData} />
