@@ -59,7 +59,6 @@ export default function Form(props: FormProps): JSX.Element {
     });
   };
 
-  console.log(formData)
   return (
     <>
       <form className="form-data" onSubmit={handleSubmitButton}>

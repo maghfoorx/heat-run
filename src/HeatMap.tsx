@@ -4,6 +4,7 @@ import ReactTooltip from "react-tooltip";
 import { startDate, endDate, yearDates } from "./utils/YearDates";
 import { format } from "date-fns";
 import { APIDataType, HeatmapDataType } from "./utils/DatesDataInterface";
+import PopupView from "./components/Popup";
 
 //to convert the received date from the API to the date type in JS you need to Date.parse(props.runningDate[i].run_date). This will make the date into a number.
 
@@ -13,6 +14,8 @@ interface HeatMapProps {
 }
 export default function HeatMap(props: HeatMapProps): JSX.Element {
   const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
+  const [popup, setPopup] = useState(false);
+  const [valueForPopup, setValueForPopup] = useState<null | HeatmapDataType>(null)
 
   useEffect(() => {
     const updatedData = [...dataForHeatmap];
@@ -26,7 +29,11 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
     }
     setDataForHeatmap(updatedData);
   }, [props.runningData, props.logButtonClicked]);
-  console.log("Running data in the heatmap component is", props.runningData);
+
+  const handleCircleClicked = (value: HeatmapDataType) => {
+    setPopup(!popup)
+    setValueForPopup(value)
+  }
 
   return (
     <>
@@ -66,9 +73,11 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
               "data-tip": `${formattedDate}, distance: ${value.distance}km`,
             };
           }}
+          onClick={(value)=> handleCircleClicked(value)}
         />
       </div>
       <ReactTooltip />
+      <PopupView popup={popup} setPopup={setPopup} valueForPopup={valueForPopup}/>
     </>
   );
 }
