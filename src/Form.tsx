@@ -5,15 +5,14 @@ import { FormDataType } from "./utils/DatesDataInterface";
 import { URL } from "./utils/URL";
 
 interface FormProps {
-  selectedDate: Date;
-  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
   setLogButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 //This component is a form that allows the user to input the data of their running activity. Once state of type RunningDataType is being managed.
 export default function Form(props: FormProps): JSX.Element {
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [formData, setFormData] = useState<FormDataType>({
-    date: props.selectedDate,
+    date: selectedDate,
     distance: 0,
     hours: 0,
     minutes: 0,
@@ -23,9 +22,9 @@ export default function Form(props: FormProps): JSX.Element {
   useEffect(() => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      date: props.selectedDate,
+      date: selectedDate,
     }));
-  }, [props.selectedDate]);
+  }, [selectedDate]);
 
   const postFormData = async (formData: FormDataType) => {
     try {
@@ -52,13 +51,15 @@ export default function Form(props: FormProps): JSX.Element {
     e.preventDefault();
     postFormData(formData);
     setFormData({
-      date: props.selectedDate,
+      date: selectedDate,
       hours: 0,
       minutes: 0,
       seconds: 0,
       distance: 0,
     });
   };
+
+  console.log(formData)
   return (
     <>
       <form className="form-data" onSubmit={handleSubmitButton}>
@@ -100,12 +101,12 @@ export default function Form(props: FormProps): JSX.Element {
             onChange={handleFormData}
           />
         </label>
+        <Datepicker
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
         <button type="submit">Log Data</button>
       </form>
-      <Datepicker
-        selectedDate={props.selectedDate}
-        setSelectedDate={props.setSelectedDate}
-      />
       <button onClick={deleteAllRuns}>Delete All Values</button>
     </>
   );

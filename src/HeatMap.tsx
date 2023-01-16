@@ -8,7 +8,6 @@ import { APIDataType, HeatmapDataType } from "./utils/DatesDataInterface";
 //to convert the received date from the API to the date type in JS you need to Date.parse(props.runningDate[i].run_date). This will make the date into a number.
 
 interface HeatMapProps {
-  selectedDate: Date;
   runningData: APIDataType[];
   logButtonClicked: boolean;
 }
@@ -33,7 +32,7 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
     <>
       <div className="heatmap-wrapper">
         <p className="heatmap-title">
-          {format(props.selectedDate, "yyyy")} Running Activity
+          2023 Running Activity
         </p>
         <CalendarHeatmap
           gutterSize={1}

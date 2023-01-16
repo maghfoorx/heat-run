@@ -6,7 +6,6 @@ import { getRunningData } from "./utils/getRunningData";
 import Form from "./Form";
 
 export default function MainBody(): JSX.Element {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [runningData, setRunningData] = useState<APIDataType[]>([]);
   const [logButtonClicked, setLogButtonClicked] = useState<boolean>(false);
 
@@ -19,14 +18,11 @@ export default function MainBody(): JSX.Element {
   return (
     <>
       <HeatMap
-        selectedDate={selectedDate}
         runningData={runningData}
         logButtonClicked={logButtonClicked}
       />
       <hr />
       <Form
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
         setLogButtonClicked={setLogButtonClicked}
       />
       <hr />
