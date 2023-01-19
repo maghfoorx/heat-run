@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { BaseURL } from "../utils/BaseURL";
 import { HeatmapDataType } from "../utils/DatesDataInterface";
 import "./popup.css";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface PopupProps {
@@ -14,22 +14,16 @@ interface PopupProps {
 }
 
 export default function PopupView(props: PopupProps): JSX.Element {
-
-
   const handleDeleteLog = async () => {
     try {
-      await axios.delete(`${BaseURL}/runs/${props.valueForPopup?.date}`,)
-      toast.success("Data deleted for this date!😁")
-      props.setLogButtonClicked((prev) => !prev)
+      await axios.delete(`${BaseURL}/runs/${props.valueForPopup?.date}`);
+      toast.success("Data deleted for this date!😁");
+      props.setLogButtonClicked((prev) => !prev);
+    } catch (error) {
+      toast.error("Failed to delete data☹️");
     }
-    catch (error) {
-      toast.error("Failed to delete data☹️")
-    }
-  }
+  };
 
-  const notifyButton = () => {
-    toast.error("it didnt work:(")
-  }
   return (
     <>
       <p>Hello</p>
@@ -49,7 +43,9 @@ export default function PopupView(props: PopupProps): JSX.Element {
             >
               Close
             </button>
-            <button className="delete-modal" onClick={handleDeleteLog}>Delete Log</button>
+            <button className="delete-modal" onClick={handleDeleteLog}>
+              Delete Log
+            </button>
           </div>
         </div>
       )}
