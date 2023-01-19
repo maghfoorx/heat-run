@@ -11,6 +11,7 @@ import PopupView from "./components/Popup";
 interface HeatMapProps {
   runningData: APIDataType[];
   logButtonClicked: boolean;
+  setLogButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export default function HeatMap(props: HeatMapProps): JSX.Element {
   const [dataForHeatmap, setDataForHeatmap] = useState(yearDates);
@@ -81,6 +82,7 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
         popup={popup}
         setPopup={setPopup}
         valueForPopup={valueForPopup}
+        setLogButtonClicked={props.setLogButtonClicked}
       />
     </>
   );
