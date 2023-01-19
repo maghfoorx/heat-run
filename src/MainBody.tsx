@@ -17,7 +17,11 @@ export default function MainBody(): JSX.Element {
 
   return (
     <>
-      <HeatMap runningData={runningData} logButtonClicked={logButtonClicked} setLogButtonClicked={setLogButtonClicked} />
+      <HeatMap
+        runningData={runningData}
+        logButtonClicked={logButtonClicked}
+        setLogButtonClicked={setLogButtonClicked}
+      />
       <hr />
       <Form setLogButtonClicked={setLogButtonClicked} />
       <hr />
