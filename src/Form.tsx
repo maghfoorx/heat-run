@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Datepicker from "./Datepicker";
 import { FormDataType } from "./utils/DatesDataInterface";
-import { URL } from "./utils/URL";
+import { BaseURL } from "./utils/BaseURL";
 
 interface FormProps {
   setLogButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,7 +29,7 @@ export default function Form(props: FormProps): JSX.Element {
   const postFormData = async (formData: FormDataType) => {
     try {
       await axios
-        .post(`${URL}/runs`, formData)
+        .post(`${BaseURL}/runs`, formData)
         .then(() => props.setLogButtonClicked((prev) => !prev));
     } catch (error) {
       console.error(error);
@@ -38,7 +38,7 @@ export default function Form(props: FormProps): JSX.Element {
 
   const deleteAllRuns = async () => {
     await axios
-      .delete(`${URL}/runs`)
+      .delete(`${BaseURL}/runs`)
       .then(() => props.setLogButtonClicked((prev) => !prev));
   };
 
