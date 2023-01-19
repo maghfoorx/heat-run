@@ -97,6 +97,7 @@ svg {
 rect {
   rx: 10px;
   ry: 10px;
+  cursor: pointer;
 }
 
 .react-calendar-heatmap text {
