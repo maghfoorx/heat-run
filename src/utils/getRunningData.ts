@@ -1,9 +1,9 @@
 import axios from "axios";
-import { URL } from "./URL";
+import { BaseURL } from "./BaseURL";
 
 export const getRunningData = async () => {
   try {
-    const response = await axios.get(`${URL}/runs`);
+    const response = await axios.get(`${BaseURL}/runs`);
     return response.data;
   } catch (error) {
     console.error(error);
