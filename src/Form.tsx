@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Datepicker from "./Datepicker";
 import { FormDataType } from "./utils/DatesDataInterface";
 import { BaseURL } from "./utils/BaseURL";
+import { toast, ToastContainer } from "react-toastify";
 
 interface FormProps {
   setLogButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,16 +31,17 @@ export default function Form(props: FormProps): JSX.Element {
     try {
       await axios
         .post(`${BaseURL}/runs`, formData)
-        .then(() => props.setLogButtonClicked((prev) => !prev));
+      props.setLogButtonClicked((prev) => !prev);
+      toast.success("Sucessfully submitted your run!😁")
     } catch (error) {
-      console.error(error);
+      toast.error("Failed to submit your run☹️")
     }
   };
 
   const deleteAllRuns = async () => {
     await axios
       .delete(`${BaseURL}/runs`)
-      .then(() => props.setLogButtonClicked((prev) => !prev));
+    props.setLogButtonClicked((prev) => !prev)
   };
 
   //function that handles the states of hours minutes seconds and changes them accordingly
@@ -107,6 +109,7 @@ export default function Form(props: FormProps): JSX.Element {
         <button type="submit">Log Data</button>
       </form>
       <button onClick={deleteAllRuns}>Delete All Values</button>
+      <ToastContainer autoClose={2000} />
     </>
   );
 }
