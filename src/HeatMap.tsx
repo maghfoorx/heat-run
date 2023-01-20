@@ -28,6 +28,8 @@ export default function HeatMap(props: HeatMapProps): JSX.Element {
       );
       if (updatingDistanceAndColour) {
         heatmapData.distance = updatingDistanceAndColour.distance;
+      } else {
+        heatmapData.distance = 0;
       }
     }
     setDataForHeatmap(updatedData);
