@@ -29,19 +29,17 @@ export default function Form(props: FormProps): JSX.Element {
 
   const postFormData = async (formData: FormDataType) => {
     try {
-      await axios
-        .post(`${BaseURL}/runs`, formData)
+      await axios.post(`${BaseURL}/runs`, formData);
       props.setLogButtonClicked((prev) => !prev);
-      toast.success("Sucessfully submitted your run!😁")
+      toast.success("Sucessfully submitted your run!😁");
     } catch (error) {
-      toast.error("Failed to submit your run☹️")
+      toast.error("Failed to submit your run☹️");
     }
   };
 
   const deleteAllRuns = async () => {
-    await axios
-      .delete(`${BaseURL}/runs`)
-    props.setLogButtonClicked((prev) => !prev)
+    await axios.delete(`${BaseURL}/runs`);
+    props.setLogButtonClicked((prev) => !prev);
   };
 
   //function that handles the states of hours minutes seconds and changes them accordingly
