@@ -22,4 +22,4 @@ Ever since discovering the github commits heatmap, I have always wanted to creat
 
 ![This is a picture of the Component Tree](./src/utils/pictures/component-tree.svg)
 
-Check it out at [Deployed Link.](https://heat-run.netlify.app/)
+Check it out by clicking [here.](https://heat-run.netlify.app/)
