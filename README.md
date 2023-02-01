@@ -14,6 +14,13 @@ Ever since discovering the github commits heatmap, I have always wanted to creat
 - react-toastify for pleasent notifications for inputting and delete data.
 - react-tooltip to allow users to see more information for each particular datapoint.
 
+#### Tech Stack
+
+- TypeScript
+- React
+- NodeJS
+- Express
+
 ### Overview
 
 ![This is an the front page](./src/utils/pictures/web-page.webp)
