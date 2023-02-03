@@ -26,7 +26,6 @@ export default function PopupView(props: PopupProps): JSX.Element {
 
   return (
     <>
-      <p>Hello</p>
       {props.popup && (
         <div className="modal">
           <div className="overlay"></div>
